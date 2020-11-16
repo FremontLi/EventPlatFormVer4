@@ -55,7 +55,7 @@ namespace EventPlatFormVer4.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AlterColumn<uint>(
                 name: "Id",
                 table: "Sponsors",
                 nullable: false,
@@ -103,7 +103,7 @@ namespace EventPlatFormVer4.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AlterColumn<uint>(
                 name: "ID",
                 table: "Persons",
                 nullable: false,
@@ -143,7 +143,7 @@ namespace EventPlatFormVer4.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AlterColumn<uint>(
                 name: "EventId",
                 table: "Participatants",
                 nullable: true,
@@ -159,7 +159,7 @@ namespace EventPlatFormVer4.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AlterColumn<uint>(
                 name: "Id",
                 table: "Participatants",
                 nullable: false,
@@ -168,7 +168,7 @@ namespace EventPlatFormVer4.Migrations
                 .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
                 .OldAnnotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AlterColumn<uint>(
                 name: "SponsorId",
                 table: "Events",
                 nullable: true,
@@ -236,7 +236,7 @@ namespace EventPlatFormVer4.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AlterColumn<uint>(
                 name: "Id",
                 table: "Events",
                 nullable: false,
@@ -284,7 +284,7 @@ namespace EventPlatFormVer4.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AlterColumn<uint>(
                 name: "Id",
                 table: "Administrators",
                 nullable: false,
@@ -343,7 +343,7 @@ namespace EventPlatFormVer4.Migrations
                 oldClrType: typeof(string),
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AlterColumn<long>(
                 name: "Id",
                 table: "Sponsors",
                 type: "bigint",
@@ -431,7 +431,7 @@ namespace EventPlatFormVer4.Migrations
                 oldClrType: typeof(string),
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AlterColumn<long>(
                 name: "EventId",
                 table: "Participatants",
                 type: "bigint",
@@ -447,7 +447,7 @@ namespace EventPlatFormVer4.Migrations
                 oldClrType: typeof(string),
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AlterColumn<long>(
                 name: "Id",
                 table: "Participatants",
                 type: "bigint",
@@ -456,7 +456,7 @@ namespace EventPlatFormVer4.Migrations
                 .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
                 .OldAnnotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AlterColumn<long>(
                 name: "SponsorId",
                 table: "Events",
                 type: "bigint",
@@ -524,7 +524,7 @@ namespace EventPlatFormVer4.Migrations
                 oldClrType: typeof(string),
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AlterColumn<long>(
                 name: "Id",
                 table: "Events",
                 type: "bigint",
@@ -572,7 +572,7 @@ namespace EventPlatFormVer4.Migrations
                 oldClrType: typeof(string),
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AlterColumn<long>(
                 name: "Id",
                 table: "Administrators",
                 type: "bigint",

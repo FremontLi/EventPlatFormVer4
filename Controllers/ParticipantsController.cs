@@ -85,14 +85,14 @@ namespace EventPlatFormVer4.Controllers
             return View(participant);
         }
 
-        public async Task<IActionResult> Edit(string participantId)
+        public async Task<IActionResult> Edit(string id)
         {
-            if (participantId == null)
+            if (id == null)
             {
                 return NotFound();
             }
-            ViewData["Participant_Id"] = participantId;
-            var participant = await _context.Participants.FindAsync(participantId);
+            ViewData["participantId"] = id;
+            var participant = await _context.Participants.FindAsync(id);
             if (participant == null)
             {
                 return NotFound();
@@ -105,10 +105,10 @@ namespace EventPlatFormVer4.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string participantId, [Bind("ID,RoleID,Name,PassWd,Email,PhoneNum")] Participant participant)
+        public async Task<IActionResult> Edit(string id, [Bind("ID,RoleID,Name,PassWd,Email,PhoneNum")] Participant participant)
 
         {
-            if (participantId != participant.ID)
+            if (id != participant.ID)
             {
                 return NotFound();
             }
@@ -136,25 +136,6 @@ namespace EventPlatFormVer4.Controllers
             return View(participant);
         }
 
-        // GET: Events/GetE-Ps/5 显示Event的所有Participants
-        [HttpGet]
-        public async Task<IActionResult> GetParticipantEvents(string participantId)
-        {
-            ViewData["Participant_Id"] = participantId;
-            //   return View(await eventParticipantService.GetParticipantEventsAsync(participantId));
-            var ep = await _context.EventParticipants.Where(item => item.ParticipantId == participantId).ToListAsync();
-            return View(ep);
-        }
-
-        // GET: Events/GetE-Ps/5 显示可以申请的所有活动
-        [HttpGet]
-        public async Task<IActionResult> AllEvents(string participantId)
-        {
-            ViewData["Participant_Id"] = participantId;
-            //   return View(await eventParticipantService.GetParticipantEventsAsync(participantId));
-            var @event = await _context.Events.Where(item => item.State == 1).ToListAsync();
-            return View(@event);
-        }
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -187,11 +168,11 @@ namespace EventPlatFormVer4.Controllers
         }
 
         //报名
-        public async Task<IActionResult> Apply(string EventId,string participantId)
+        public async Task<IActionResult> Apply(string EventId,string id)
         {
-            ViewData["Participant_Id"] = participantId;
+            ViewData["Pid"] = id;
             ViewData["EventId"] = EventId;
-            await participantService.Apply(EventId, participantId);
+            await participantService.Apply(EventId,id);
             _context.EventParticipants.UpdateRange();
             return View(_context.Events.Where(item => item.Id == EventId).FirstOrDefault());
 
@@ -210,13 +191,11 @@ namespace EventPlatFormVer4.Controllers
         }
 
         //退赛
-        public async Task<IActionResult> ExitEvent(string id, string EPID)
+        public async Task<IActionResult> ExitEvent(string id, [Bind("State")] EventParticipant EP)
         {
             ViewData["Pid"] = id;
-            ViewData["EPID"] = EPID;
-            await participantService.ExitEvent(EPID, id);
-            _context.EventParticipants.UpdateRange();
-            return View(_context.EventParticipants.Where(item=>item.ParticipantId==id).FirstOrDefault());
+            await participantService.ExitEvent(EP, id);
+            return RedirectToAction(nameof(Info));
         }
 
     }

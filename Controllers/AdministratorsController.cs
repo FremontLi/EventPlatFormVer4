@@ -56,7 +56,7 @@ namespace EventPlatFormVer4.Controllers
                 string s;
                 if (participant == null) s = null;
                 else s = participant.ID;
-                return RedirectToAction("Info", "Participants", new { id = s });
+                return RedirectToAction("Details", "Participants", new { id = s });
             }
         }
 

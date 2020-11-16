@@ -9,14 +9,18 @@
 <table class="table">
     <thead>
         <tr>
+
             <th>
-                @Html.DisplayName("EventId")
+                @Html.DisplayName("开始时间")
             </th>
             <th>
-                @Html.DisplayName("Details")
+                @Html.DisplayName("结束时间")
             </th>
             <th>
-                @Html.DisplayName("State")
+                @Html.DisplayName("活动地址")
+            </th>
+            <th>
+                @Html.DisplayName("报名状态")
             </th>
             <th>
                 @Html.DisplayName("退赛")
@@ -28,17 +32,37 @@
         @foreach (var item in Model)
         {
             <tr>
+
+
                 <td>
-                    @Html.DisplayFor(modelItem => item.EventId)
+                    @Html.DisplayFor(modelItem => item.Event.EventStartTime)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Details)
+                    @Html.DisplayFor(modelItem => item.Event.EventEndTime)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.State)
+                    @Html.DisplayFor(modelItem => item.Event.Address)
                 </td>
                 <td>
-                    <a asp-action="ExitEvent" asp-route-id="@ViewData["Pid"]" asp-route-EPID="@item.Id">ExitEvent</a> 
+                    @if (item.State == 0)
+                    {
+                        @Html.Display("待审核")
+                    }
+                    @if (item.State == 1)
+                    {
+                        @Html.Display("报名成功")
+                    }
+                    @if (item.State == 2)
+                    {
+                        @Html.Display("被拒绝")
+                    }
+                    @if (item.State == 3)
+                    {
+                        @Html.Display("已退赛")
+                    }
+                </td>
+                <td>
+                    <a asp-action="ExitEvent" asp-route-id="@item.Id">已有的活动</a> |
                 </td>
             </tr>
         }

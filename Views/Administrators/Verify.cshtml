@@ -108,9 +108,9 @@
                     break;
                 case 3:
                     <td>
-                        <button type="button" disabled="disabled"> Accept</button>
-                        <button><a asp-action="Ban" asp-route-id="@Model.Id">Ban</a></button>
-                        <button><a asp-action="Info" asp-route-id="@ViewData["aid"]">Back</a></button>
+                        <button type="button" disabled="disabled">接受</button>
+                        <button><a asp-action="Ban" asp-route-id="@Model.Id">拒绝</a></button>
+                        <button><a asp-action="Info" asp-route-id="@ViewData["aid"]">返回</a></button>
                     </td>
                     break;
                 default:

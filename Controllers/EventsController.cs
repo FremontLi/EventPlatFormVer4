@@ -44,7 +44,6 @@ namespace EventPlatFormVer4.Controllers
 
         }
         // GET: Events/GetE-Ps/5 显示Event的所有Participants
-        [HttpGet]
         public async Task<IActionResult> GetParticipantEvents(string participantId)
         {
             ViewData["Participant_Id"] = participantId;
@@ -52,17 +51,6 @@ namespace EventPlatFormVer4.Controllers
             var ep = await _context.EventParticipants.Where(item => item.ParticipantId == participantId).ToListAsync();
             return View(ep);
         }
-
-        // GET: Events/GetE-Ps/5 显示Event的所有Participants
-        [HttpGet]
-        public async Task<IActionResult> AllEvents(string participantId)
-        {
-            ViewData["Participant_Id"] = participantId;
-            //   return View(await eventParticipantService.GetParticipantEventsAsync(participantId));
-            var @event = await _context.Events.Where(item => item.State == 1).ToListAsync();
-            return View(@event);
-        }
-
         // GET: Events/Details/5
         public async Task<IActionResult> Details(string? id)
         {
